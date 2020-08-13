@@ -1,6 +1,10 @@
 package main.java.chapter.chapter1.variantB;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
 
 /*
 Ввести с консоли n целых чисел и поместить их в массив. На консоль вывести:
@@ -54,7 +58,8 @@ public class TaskB {
 		System.out.println("14. Элементы, которые равны полусумме соседних элементов.");
 		task._14();
 
-		System.out.println("15. Период десятичной дроби p = m/n для первых двух целых положи-тельных чисел n и m, расположенных подряд.");
+		System.out.println(
+				"15. Период десятичной дроби p = m/n для первых двух целых положи-тельных чисел n и m, расположенных подряд.");
 		task._15();
 
 		System.out.println("16. Построить треугольник Паскаля для первого положительного числа.");
@@ -69,7 +74,7 @@ public class TaskB {
 
 	private void print(int[] arrInt) {
 		for (int i = 0; i < arrInt.length; i++) {
-			System.out.print(i + " ");
+			System.out.print(arrInt[i] + " ");
 		}
 		System.out.println();
 	}
@@ -79,6 +84,17 @@ public class TaskB {
 			System.out.print(list.get(i) + " ");
 		}
 		System.out.println();
+	}
+
+	private void print(HashMap map) {
+		Iterator<Map.Entry<Integer, Integer>> iterator = map.entrySet().iterator();
+
+		while (iterator.hasNext()) {
+			Entry<Integer, Integer> pair = iterator.next();
+			Integer key = pair.getKey();
+			Integer value = pair.getValue();
+			System.out.println(key + ":" + value);
+		}
 	}
 
 	// 1. Четные и нечетные числа.
@@ -131,8 +147,19 @@ public class TaskB {
 
 //5. Элементы, расположенные методом пузырька по убыванию модулей.
 	private void _5() {
-		
-		
+		int[] arr2 = arr.clone();
+
+		for (int i = arr2.length - 1; i >= 1; i--) {
+			for (int j = 0; j < i; j++) {
+				if (arr2[j] > arr2[j + 1]) {
+					int temp = arr2[j];
+					arr2[j] = arr2[j + 1];
+					arr2[j + 1] = temp;
+				}
+			}
+		}
+		print(arr2);
+
 	}
 
 //6. Все трехзначные числа, в десятичной записи которых нет одинаковых цифр.
@@ -159,7 +186,7 @@ public class TaskB {
 			if (arr[i] < min)
 				min = arr[i];
 		}
-		
+
 		boolean isOk = true;
 		for (int i = 1; i <= min; i++) {
 
@@ -172,7 +199,7 @@ public class TaskB {
 			}
 			isOk = true;
 		}
-		
+
 		first: for (int i = 1; i <= min; i++) {
 
 			for (int j = 0; j < arr.length; j++) {
@@ -181,27 +208,62 @@ public class TaskB {
 			}
 			nok = i;
 		}
-		System.out.println("nod: " + nod+", nok: "+nok);
+		System.out.println("nod: " + nod + ", nok: " + nok);
 	}
 
 //8. Простые числа.
 	private void _8() {
 		first: for (int i = 0; i < arr.length; i++) {
 			for (int j = 2; j < arr[i]; j++) {
-				if(arr[i]%j==0)continue first;
+				if (arr[i] % j == 0)
+					continue first;
 			}
-			System.out.print(arr[i]+" ");
+			System.out.print(arr[i] + " ");
 		}
-	System.out.println();
+		System.out.println();
 	}
 
 //9. Отсортированные числа в порядке возрастания и убывания.
 	private void _9() {
-		
+
+		int[] arr2 = arr.clone();
+
+		for (int i = arr2.length - 1; i >= 1; i--) {
+			for (int j = 0; j < i; j++) {
+				if (arr2[j] > arr2[j + 1]) {
+					int temp = arr2[j];
+					arr2[j] = arr2[j + 1];
+					arr2[j + 1] = temp;
+				}
+			}
+		}
+		print(arr2);
+
+		int[] arr3 = arr.clone();
+
+		for (int i = arr3.length - 1; i >= 1; i--) {
+			for (int j = 0; j < i; j++) {
+				if (arr3[j] < arr3[j + 1]) {
+					int temp = arr3[j];
+					arr3[j] = arr3[j + 1];
+					arr3[j + 1] = temp;
+				}
+			}
+		}
+		print(arr3);
 	}
 
 //10. Числа в порядке  убывания частоты встречаемости чисел.
 	private void _10() {
+		HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+		for (int i = 0; i < arr.length; i++) {
+			if (map.containsKey(arr[i]))
+				map.put(arr[i], arr[i] + 1);
+			else
+				map.put(arr[i], 1);
+		}
+
+		print(map);
 	}
 
 //11. “Счастливые” числа.
