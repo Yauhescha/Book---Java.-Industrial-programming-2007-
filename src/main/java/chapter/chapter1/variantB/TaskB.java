@@ -268,10 +268,49 @@ public class TaskB {
 
 //11. “Счастливые” числа.
 	private void _11() {
+		for (int i = 0; i < arr.length; i++) {
+			if(arr[i]>=100000 && arr[i]<=999999) {
+				String temp = arr[i]+"";
+				int a=Integer.parseInt(temp.charAt(0)+"");
+				int b=Integer.parseInt(temp.charAt(1)+"");
+				int c=Integer.parseInt(temp.charAt(2)+"");
+				int d=Integer.parseInt(temp.charAt(3)+"");
+				int e=Integer.parseInt(temp.charAt(4)+"");
+				int f=Integer.parseInt(temp.charAt(5)+"");
+				if(a+b+c==d+e+f)
+					System.out.print(arr[i]+" ");
+			}
+		}
+		System.out.println();
 	}
 
 //12. Числа Фибоначчи: f0 = f1 = 1, f (n) = f (n–1) + f (n–2).
 	private void _12() {
+		int max=arr[0];
+		for (int i = 0; i < arr.length; i++) {
+			if(arr[i]>max)max=arr[i];
+		}
+		
+		ArrayList<Integer> fibon = new ArrayList<Integer>();
+		fibon.add(0);
+		fibon.add(1);
+		fibon.add(3);
+		int cur=2;
+		int last = 1;
+		int temp = 0;
+		
+		while(cur<=max) {
+			temp=cur+last;
+			fibon.add(temp);
+			last=cur;
+			cur=temp;
+		}
+		
+		for (int i = 0; i < arr.length; i++) {
+			if(fibon.contains(arr[i]))
+				System.out.print(arr[i]+" ");
+		}
+		System.out.println();
 	}
 
 //13. Числа-палиндромы, значения которых в прямом и обратном порядке совпадают.
