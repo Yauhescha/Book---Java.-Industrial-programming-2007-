@@ -315,18 +315,95 @@ public class TaskB {
 
 //13. Числа-палиндромы, значения которых в прямом и обратном порядке совпадают.
 	private void _13() {
+		for (int i = 0; i < arr.length; i++) {
+			String temp = arr[i]+"";
+			
+			int length = temp.length()/2;
+			boolean trust = true;
+			for (int j = 0; j < length; j++) {
+				int first = Integer.parseInt(temp.charAt(j)+"");
+				int last = Integer.parseInt(temp.charAt(temp.length()-1-j)+"");
+				if(first!=last)
+					trust=false;
+			}
+			if(trust)
+				System.out.print(arr[i]+" ");
+			
+		}
+		System.out.println();
 	}
 
 //14. Элементы, которые равны полусумме соседних элементов.
 	private void _14() {
+		
+		for (int i = 1; i < arr.length-1; i++) {
+			int subsum=(arr[i-1]+arr[i+1])/2;
+			if(arr[i]==subsum)
+				System.out.print(i+":"+arr[i]+" ");				
+		}
+		System.out.println();
 	}
 
-//15. Период десятичной дроби p = m/n для первых двух целых положи-тельных чисел n и m, расположенных подряд.
+//15. Период десятичной дроби p = m/n для первых двух целых положи-тельных чисел n и m, 
+//    расположенных подряд.
 	private void _15() {
+		int[]numbers=new int[] {10,3};
+		long firstNumber, secondNumber, r, l, t, i;
+		for (int n = 0; n < numbers.length; n++)
+			if (numbers.length < 2)
+				break;
+			else if (numbers[n] >= 0 && numbers[n + 1] >= 0) {
+				firstNumber = numbers[n];
+				secondNumber = numbers[n + 1];
+				r = firstNumber;
+				for (i = 0; i < secondNumber; i++)
+					r = (r * 10) % secondNumber;
+				t = r;
+				l = 0;
+				do {
+					r = (r * 10) % secondNumber;
+					l++;
+				} while (r != t);
+				t = r = firstNumber;
+
+		System.out.print(numbers[n]/numbers[n+1]+".");
+		
+				for (i = 0; i < l; i++)
+					r = (r * 10) % secondNumber;
+				for (i = 0; r != t; i++) {
+					System.out.print(t * 10 / secondNumber);
+					r = (r * 10) % secondNumber;
+					t = (t * 10) % secondNumber;
+				}
+				System.out.print('(');
+				for (i = 0; i < l; i++) {
+					System.out.print(t * 10 / secondNumber);
+					t = (t * 10) % secondNumber;
+				}
+				System.out.println(')' + " = " + firstNumber + "/" + secondNumber);
+				break;
+			}
 	}
 
 //16. Построить треугольник Паскаля для первого положительного числа. 
 	private void _16() {
+		int maxRows = 6;
+		int r, num;
+		for (int i = 0; i <= maxRows; i++) {
+		       num = 1;
+		       r = i + 1;
+
+		       for (int j = maxRows - i; j > 0; j--) {
+		           System.out.print(" ");
+		       }
+		       for (int col = 0; col <= i; col++) {
+		           if (col > 0) {
+		               num = num * (r - col) / col;
+		           }
+		           System.out.print(num + " ");
+		       }
+		       System.out.println();
+		}
 	}
 
 }
