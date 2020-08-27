@@ -212,12 +212,12 @@ public class Chapter2VariantA {
 //	7. Ввести n слов с консоли. Найти слово,  состоящее только из различных символов. Если таких слов несколько, найти первое из них.
 	public void task7(String[] arr) {
 		for (int i = 0; i < arr.length; i++) {
-			HashSet<Byte> set=new HashSet<Byte>();
+			HashSet<Byte> set = new HashSet<Byte>();
 			byte[] bytes = arr[i].getBytes();
 			for (int j = 0; j < bytes.length; j++) {
 				set.add(bytes[j]);
 			}
-			if (set.size()==bytes.length) {
+			if (set.size() == bytes.length) {
 				System.out.println(arr[i]);
 				break;
 			}
@@ -227,6 +227,38 @@ public class Chapter2VariantA {
 
 //	8. Ввести n слов с консоли. Среди слов, состоящих только из цифр, найти слово-палиндром. Если таких слов больше одного, найти вто-рое из них.
 	public void task8(String[] arr) {
+		String temp = "";
+		boolean isFirst = false;
+		for (int j = 0; j < arr.length; j++) {
+			temp = checkDigital(arr[j]);
+			if(!temp.equals("")& !isFirst)isFirst=true;
+			else break;
+		}
+		System.out.println(temp);
+	}
+
+	private String checkDigital(String s) {
+		Pattern p = Pattern.compile("[\\d]*");
+		Matcher m = p.matcher(s);
+
+		if (m.matches()) {
+			return ifMatches(s);
+		}
+		return "";
+	}
+
+	private String ifMatches(String s) {
+		boolean isok = true;
+
+		for (int i = 0; i < s.length() / 2; i++) {
+			if (s.charAt(i) != s.charAt(s.length() - 1 - i)) {
+				isok = false;
+				break;
+			}
+		}
+		if (isok)
+			return s;
+		return "";
 	}
 
 //	9. Написать программы решения задач 1–8, осуществляя ввод строк как аргументов командной строки.
