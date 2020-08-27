@@ -77,7 +77,6 @@ public class Chapter2VariantA {
 
 //	1. Ввести n строк с консоли, найти самую короткую и самую длинную строки. Вывести найденные строки и их длину.
 	public void task1(String[] strings) {
-		
 
 		int indexMin, indexMax;
 		indexMax = indexMin = 0;
@@ -133,11 +132,11 @@ public class Chapter2VariantA {
 		HashMap<Byte, Integer> map;
 
 		int indexMin = 0, countCharMin;
-		
+
 		map = setByteCountInMap(arr[0]);
 		countCharMin = map.size();
 
-		for (int i = 1; i <arr.length; i++) {
+		for (int i = 1; i < arr.length; i++) {
 			map = setByteCountInMap(arr[i]);
 			if (countCharMin > map.size()) {
 				countCharMin = map.size();
@@ -172,24 +171,40 @@ public class Chapter2VariantA {
 //	5. Ввести n слов с консоли. Найти количество слов,  содержащих только символы латинского алфавита, а среди них – количество слов с равным числом гласных и согласных букв.
 	public void task5(String[] arr) {
 		Pattern pattern = Pattern.compile("[a-zA-Z]*");
-		
+
 		Matcher matcher;
 		for (int i = 0; i < arr.length; i++) {
 			matcher = pattern.matcher(arr[i]);
-			if(matcher.matches()) {
-				String temp=arr[i];
-				int all=temp.length();
-				int gl=temp.replaceAll("[aeiuo]", "").length();
-				all-=gl;
-				if(all==gl)
+			if (matcher.matches()) {
+				String temp = arr[i];
+				int all = temp.length();
+				int gl = temp.replaceAll("[aeiuo]", "").length();
+				all -= gl;
+				if (all == gl)
 					System.out.println(arr[i]);
 			}
 		}
-		
+
 	}
 
 //	6. Ввести n слов с консоли. Найти слово,  символы в котором идут в стро-гом порядке возрастания их кодов. Если таких слов несколько, найти первое из них.
 	public void task6(String[] arr) {
+		for (String str : arr) {
+			boolean isok = true;
+			byte b = str.getBytes()[0];
+			byte[] arrB = str.getBytes();
+			for (int i = 1; i < arrB.length; i++) {
+				byte bt = arrB[i];
+				if (b < bt) {
+					b = bt;
+				} else {
+					isok = false;
+					break;
+				}
+			}
+			if (isok)
+				System.out.println(str);
+		}
 	}
 
 //	7. Ввести n слов с консоли. Найти слово,  состоящее только из различных символов. Если таких слов несколько, найти первое из них.
