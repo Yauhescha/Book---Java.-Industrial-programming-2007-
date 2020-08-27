@@ -44,7 +44,7 @@ public class Chapter2VariantA {
 //		chapter2.task9(strings);
 		System.out.println(
 				"10. Используя оператор switch, написать программу, которая выводит на экран сообщения о принадлежности некоторого значения k интерва-лам (-10k, 0], (0, 5], (5, 10], (10, 10k].");
-		chapter2.task10();
+		chapter2.task10(6);
 		System.out.println(
 				"11. Используя оператор switch, написать программу, которая выводит на экран сообщения о принадлежности некоторого значения k интервалам (-10k, 5], [0, 10], [5, 15], [10, 10k].");
 		chapter2.task11();
@@ -276,7 +276,27 @@ public class Chapter2VariantA {
 	}
 
 //	10. Используя оператор switch, написать программу, которая выводит на экран сообщения о принадлежности некоторого значения k интерва-лам (-10k, 0], (0, 5], (5, 10], (10, 10k].
-	public void task10() {
+	public void task10(int k) {
+		switch (k > -k * 10 && k <= 0 ? 1: 
+				k > 0 && k <= 5 ? 2 : 
+				k > 5 && k <= 10 ? 3 : 
+				k > 10 && k <= 10 * k ? 4 : 5) {
+		case 1:
+			System.out.println("(-10k, 0]");
+			break;
+		case 2:
+			System.out.println("(0, 5]");
+			break;
+		case 3:
+			System.out.println("(5, 10]");
+			break;
+		case 4:
+			System.out.println("(10, 10k]");
+			break;
+		case 5:
+			System.out.println("not in a group");
+			break;
+		}
 	}
 
 //	11. Используя оператор switch, написать программу, которая выводит на экран сообщения о принадлежности некоторого значения k интервалам (-10k, 5], [0, 10], [5, 15], [10, 10k].
