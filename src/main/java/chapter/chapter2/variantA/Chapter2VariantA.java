@@ -36,12 +36,12 @@ public class Chapter2VariantA {
 //		System.out.println(
 //				"7. Ввести n слов с консоли. Найти слово,  состоящее только из различных символов. Если таких слов несколько, найти первое из них.");
 //		chapter2.task7(strings);
-		System.out.println(
-				"8. Ввести n слов с консоли. Среди слов, состоящих только из цифр, найти слово-палиндром. Если таких слов больше одного, найти вто-рое из них.");
-		chapter2.task8(strings);
-		System.out.println(
-				"9. Написать программы решения задач 1–8, осуществляя ввод строк как аргументов командной строки.");
-		chapter2.task9(strings);
+//		System.out.println(
+//				"8. Ввести n слов с консоли. Среди слов, состоящих только из цифр, найти слово-палиндром. Если таких слов больше одного, найти вто-рое из них.");
+//		chapter2.task8(strings);
+//		System.out.println(
+//				"9. Написать программы решения задач 1–8, осуществляя ввод строк как аргументов командной строки.");
+//		chapter2.task9(strings);
 		System.out.println(
 				"10. Используя оператор switch, написать программу, которая выводит на экран сообщения о принадлежности некоторого значения k интерва-лам (-10k, 0], (0, 5], (5, 10], (10, 10k].");
 		chapter2.task10();
@@ -231,8 +231,10 @@ public class Chapter2VariantA {
 		boolean isFirst = false;
 		for (int j = 0; j < arr.length; j++) {
 			temp = checkDigital(arr[j]);
-			if(!temp.equals("")& !isFirst)isFirst=true;
-			else break;
+			if (!temp.equals("") & !isFirst)
+				isFirst = true;
+			else
+				break;
 		}
 		System.out.println(temp);
 	}
@@ -263,6 +265,14 @@ public class Chapter2VariantA {
 
 //	9. Написать программы решения задач 1–8, осуществляя ввод строк как аргументов командной строки.
 	public void task9(String[] arr) {
+		task1(arr);
+		task2(arr);
+		task3(arr);
+		task4(arr);
+		task5(arr);
+		task6(arr);
+		task7(arr);
+		task8(arr);
 	}
 
 //	10. Используя оператор switch, написать программу, которая выводит на экран сообщения о принадлежности некоторого значения k интерва-лам (-10k, 0], (0, 5], (5, 10], (10, 10k].
