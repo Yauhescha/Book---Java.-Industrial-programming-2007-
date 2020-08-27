@@ -1,7 +1,9 @@
 package main.java.chapter.chapter2.variantA;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -25,15 +27,15 @@ public class Chapter2VariantA {
 //		System.out.println(
 //				"4. Ввести n слов с консоли. Найти слово, в котором число различных символов минимально. Если таких слов несколько, найти первое из них.");
 //		chapter2.task4(strings);
-		System.out.println(
-				"5. Ввести n слов с консоли. Найти количество слов,  содержащих только символы латинского алфавита, а среди них – количество слов с равным числом гласных и согласных букв.");
-		chapter2.task5(strings);
-		System.out.println(
-				"6. Ввести n слов с консоли. Найти слово,  символы в котором идут в стро-гом порядке возрастания их кодов. Если таких слов несколько, найти первое из них.");
-		chapter2.task6(strings);
-		System.out.println(
-				"7. Ввести n слов с консоли. Найти слово,  состоящее только из различных символов. Если таких слов несколько, найти первое из них.");
-		chapter2.task7(strings);
+//		System.out.println(
+//				"5. Ввести n слов с консоли. Найти количество слов,  содержащих только символы латинского алфавита, а среди них – количество слов с равным числом гласных и согласных букв.");
+//		chapter2.task5(strings);
+//		System.out.println(
+//				"6. Ввести n слов с консоли. Найти слово,  символы в котором идут в стро-гом порядке возрастания их кодов. Если таких слов несколько, найти первое из них.");
+//		chapter2.task6(strings);
+//		System.out.println(
+//				"7. Ввести n слов с консоли. Найти слово,  состоящее только из различных символов. Если таких слов несколько, найти первое из них.");
+//		chapter2.task7(strings);
 		System.out.println(
 				"8. Ввести n слов с консоли. Среди слов, состоящих только из цифр, найти слово-палиндром. Если таких слов больше одного, найти вто-рое из них.");
 		chapter2.task8(strings);
@@ -209,6 +211,18 @@ public class Chapter2VariantA {
 
 //	7. Ввести n слов с консоли. Найти слово,  состоящее только из различных символов. Если таких слов несколько, найти первое из них.
 	public void task7(String[] arr) {
+		for (int i = 0; i < arr.length; i++) {
+			HashSet<Byte> set=new HashSet<Byte>();
+			byte[] bytes = arr[i].getBytes();
+			for (int j = 0; j < bytes.length; j++) {
+				set.add(bytes[j]);
+			}
+			if (set.size()==bytes.length) {
+				System.out.println(arr[i]);
+				break;
+			}
+		}
+
 	}
 
 //	8. Ввести n слов с консоли. Среди слов, состоящих только из цифр, найти слово-палиндром. Если таких слов больше одного, найти вто-рое из них.
