@@ -12,33 +12,34 @@ public class Chapter2VariantA {
 
 	public static void main(String[] args) {
 		Chapter2VariantA chapter2 = new Chapter2VariantA();
+		String[] strings = chapter2.getNLinesFromConsole();
 //		System.out.println(
 //				"1. Ввести n строк с консоли, найти самую короткую и самую длинную строки. Вывести найденные строки и их длину.");
-//		chapter2.task1();
+//		chapter2.task1(strings);
 //		System.out.println(
 //				"2. Ввести n строк с консоли. Упорядочить и вывести строки в порядке возрастания (убывания) значений их длины.");
-//		chapter2.task2();
+//		chapter2.task2(strings);
 //		System.out.println(
 //				"3. Ввести n строк с консоли. Вывести на консоль те строки, длина кото-рых меньше (больше) средней, а также длину.");
-//		chapter2.task3();
+//		chapter2.task3(strings);
 //		System.out.println(
 //				"4. Ввести n слов с консоли. Найти слово, в котором число различных символов минимально. Если таких слов несколько, найти первое из них.");
-//		chapter2.task4();
+//		chapter2.task4(strings);
 		System.out.println(
 				"5. Ввести n слов с консоли. Найти количество слов,  содержащих только символы латинского алфавита, а среди них – количество слов с равным числом гласных и согласных букв.");
-		chapter2.task5();
+		chapter2.task5(strings);
 		System.out.println(
 				"6. Ввести n слов с консоли. Найти слово,  символы в котором идут в стро-гом порядке возрастания их кодов. Если таких слов несколько, найти первое из них.");
-		chapter2.task6();
+		chapter2.task6(strings);
 		System.out.println(
 				"7. Ввести n слов с консоли. Найти слово,  состоящее только из различных символов. Если таких слов несколько, найти первое из них.");
-		chapter2.task7();
+		chapter2.task7(strings);
 		System.out.println(
 				"8. Ввести n слов с консоли. Среди слов, состоящих только из цифр, найти слово-палиндром. Если таких слов больше одного, найти вто-рое из них.");
-		chapter2.task8();
+		chapter2.task8(strings);
 		System.out.println(
 				"9. Написать программы решения задач 1–8, осуществляя ввод строк как аргументов командной строки.");
-		chapter2.task9();
+		chapter2.task9(strings);
 		System.out.println(
 				"10. Используя оператор switch, написать программу, которая выводит на экран сообщения о принадлежности некоторого значения k интерва-лам (-10k, 0], (0, 5], (5, 10], (10, 10k].");
 		chapter2.task10();
@@ -75,8 +76,8 @@ public class Chapter2VariantA {
 	}
 
 //	1. Ввести n строк с консоли, найти самую короткую и самую длинную строки. Вывести найденные строки и их длину.
-	public void task1() {
-		String[] strings = getNLinesFromConsole();
+	public void task1(String[] strings) {
+		
 
 		int indexMin, indexMax;
 		indexMax = indexMin = 0;
@@ -94,8 +95,7 @@ public class Chapter2VariantA {
 	}
 
 //	2. Ввести n строк с консоли. Упорядочить и вывести строки в порядке возрастания (убывания) значений их длины.
-	public void task2() {
-		String[] arr = getNLinesFromConsole();
+	public void task2(String[] arr) {
 		String temp;
 		boolean isOkay = false;
 		while (!isOkay) {
@@ -114,8 +114,7 @@ public class Chapter2VariantA {
 	}
 
 //	3. Ввести n строк с консоли. Вывести на консоль те строки, длина кото-рых меньше (больше) средней, а также длину.
-	public void task3() {
-		String[] arr = getNLinesFromConsole();
+	public void task3(String[] arr) {
 		int average = 0;
 
 		for (int i = 0; i < arr.length; i++) {
@@ -130,8 +129,7 @@ public class Chapter2VariantA {
 	}
 
 //	4. Ввести n слов с консоли. Найти слово, в котором число различных символов минимально. Если таких слов несколько, найти первое из них.
-	public void task4() {
-		String[] arr = getNLinesFromConsole();
+	public void task4(String[] arr) {
 		HashMap<Byte, Integer> map;
 
 		int indexMin = 0, countCharMin;
@@ -172,35 +170,38 @@ public class Chapter2VariantA {
 	}
 
 //	5. Ввести n слов с консоли. Найти количество слов,  содержащих только символы латинского алфавита, а среди них – количество слов с равным числом гласных и согласных букв.
-	public void task5() {
-//		String[] arr = getNLinesFromConsole();
-//		
-//		Pattern pattern = Pattern.compile("[a-zA-Z\\d\\s\\p{Punct}]*");
-//		
-//		Matcher matcher;
-//		for (int i = 0; i < arr.length; i++) {
-//			matcher = pattern.matcher(arr[i]);
-//			if(matcher.matches()) {
-//				
-//			}System.out.println(arr[i]);
-//		}
+	public void task5(String[] arr) {
+		Pattern pattern = Pattern.compile("[a-zA-Z]*");
+		
+		Matcher matcher;
+		for (int i = 0; i < arr.length; i++) {
+			matcher = pattern.matcher(arr[i]);
+			if(matcher.matches()) {
+				String temp=arr[i];
+				int all=temp.length();
+				int gl=temp.replaceAll("[aeiuo]", "").length();
+				all-=gl;
+				if(all==gl)
+					System.out.println(arr[i]);
+			}
+		}
 		
 	}
 
 //	6. Ввести n слов с консоли. Найти слово,  символы в котором идут в стро-гом порядке возрастания их кодов. Если таких слов несколько, найти первое из них.
-	public void task6() {
+	public void task6(String[] arr) {
 	}
 
 //	7. Ввести n слов с консоли. Найти слово,  состоящее только из различных символов. Если таких слов несколько, найти первое из них.
-	public void task7() {
+	public void task7(String[] arr) {
 	}
 
 //	8. Ввести n слов с консоли. Среди слов, состоящих только из цифр, найти слово-палиндром. Если таких слов больше одного, найти вто-рое из них.
-	public void task8() {
+	public void task8(String[] arr) {
 	}
 
 //	9. Написать программы решения задач 1–8, осуществляя ввод строк как аргументов командной строки.
-	public void task9() {
+	public void task9(String[] arr) {
 	}
 
 //	10. Используя оператор switch, написать программу, которая выводит на экран сообщения о принадлежности некоторого значения k интерва-лам (-10k, 0], (0, 5], (5, 10], (10, 10k].
