@@ -1,4 +1,4 @@
-package main.java.chapter.chapter1.tests;
+package main.java.chapter.chapter01.tests;
 
 public class Tester {
 	public static void main() {

@@ -1,4 +1,4 @@
-package main.java.chapter.chapter1.variantA;
+package main.java.chapter.chapter01.variantA;
 //Создать  приложение,  которое  отображает  в  окне  консоли  аргументы 
 
 //командной строки метода main() в обратном порядке. 

@@ -1,4 +1,4 @@
-package main.java.chapter.chapter1.variantB;
+package main.java.chapter.chapter01.variantB;
 
 import java.util.ArrayList;
 import java.util.HashMap;

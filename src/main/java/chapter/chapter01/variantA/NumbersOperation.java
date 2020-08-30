@@ -1,4 +1,4 @@
-package main.java.chapter.chapter1.variantA;
+package main.java.chapter.chapter01.variantA;
 
 //Создать программу ввода целых чисел как аргументов командной стро-
 //ки, подсчета их суммы (произведения) и вывода результата на консоль
