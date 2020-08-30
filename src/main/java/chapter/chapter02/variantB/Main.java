@@ -37,13 +37,13 @@ public class Main {
 //		System.out.println("8. Вычислить определитель матрицы.");
 //		main.task8(arr);
 //
-		System.out
-				.println("9. Построить матрицу, вычитая из элементов каждой строки матрицы ее среднее арифметическое.");
-		main.task9(arr);
+//		System.out
+//				.println("9. Построить матрицу, вычитая из элементов каждой строки матрицы ее среднее арифметическое.");
+//		main.task9(arr);
 //
-//		System.out.println(
-//				"10. Найти максимальный элемент(ы) в матрице и удалить из матрицы все строки и столбцы, его содержащие.");
-//		main.task10(arr);
+		System.out.println(
+				"10. Найти максимальный элемент(ы) в матрице и удалить из матрицы все строки и столбцы, его содержащие.");
+		main.task10(arr);
 //
 //		System.out.println("11. Уплотнить матрицу, удаляя из нее строки и столбцы, заполненные нулями.");
 //		main.task11(arr);
@@ -329,10 +329,38 @@ public class Main {
 
 //	10. Найти максимальный элемент(ы) в матрице и удалить из матрицы все строки и столбцы, его содержащие.
 	public void task10(float arr[][]) {
+		float max = arr[0][0];
+		int itmp = 0, jtmp = 0;
+		for (int i = 0; i < arr.length; i++) {
+			for (int j = 0; j < arr[i].length; j++) {
+				if (max < arr[i][j]) {
+					max = arr[i][j];
+					itmp = i;
+					jtmp = j;
+				}
+			}
+		}
+		System.out.println("Max: " + max);
+		float[][] matrixWithoutRowAndCol = getMatrixWithoutRowAndCol(arr, itmp, jtmp);
+		printArray(matrixWithoutRowAndCol);
+	}
+
+	private float[][] getMatrixWithoutRowAndCol(float[][] arr, int row, int col) {
+		float[][] newArr = new float[arr.length - 1][arr[0].length - 1];
+		int itmp, jtmp;
+		for (int i = 0; i < newArr.length; i++) {
+			for (int j = 0; j < newArr[i].length; j++) {
+				itmp = i >= row ? i + 1 : i;
+				jtmp = j >= col ? j + 1 : j;
+				newArr[i][j] = arr[itmp][jtmp];
+			}
+		}
+		return newArr;
 	}
 
 //	System.out.println("11. Уплотнить матрицу, удаляя из нее строки и столбцы, заполненные нулями.
 	public void task11(float arr[][]) {
+		
 	}
 
 //	12. В матрице найти минимальный элемент и переместить его на место за-данного элемента путем перестановки строк и столбцов.
