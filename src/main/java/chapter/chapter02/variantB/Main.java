@@ -285,7 +285,35 @@ public class Main {
 
 //	8. Вычислить определитель матрицы.
 	public void task8(float arr[][]) {
+		arr = new float[][] {{-2,1,3,2},{3,0,-1,2},{-5,2,3,0},{4,-1,2,-3} };
+		printArray(arr);
+
+		float opred = getOpred(arr);
+		System.out.println(opred);
 	}
+
+	private float getOpred(float[][] arr) {
+		float opr = 0;
+		if (arr.length == 2 && arr[0].length == 2)
+			return arr[0][0] * arr[1][1] - arr[1][0] * arr[0][1];
+
+		for (int i = 0; i < arr.length; i++) {
+			int znak = i % 2 == 0 ? 1 : -1;
+			opr += getOpred(getRowMinor(arr, i)) * znak*arr[0][i];
+		}
+		return opr;
+	}
+
+	private float[][] getRowMinor(float[][] arr, int col) {
+		float[][] newArr = new float[arr.length - 1][arr[0].length - 1];
+		for (int i = 0; i < newArr.length; i++) {
+			for (int j = 0; j < newArr[i].length; j++) {
+				newArr[i][j] = col <= j ? arr[i + 1][j + 1] : arr[i + 1][j];
+			}
+		}
+		return newArr;
+	}
+
 
 //	9. Построить матрицу, вычитая из элементов каждой строки матрицы ее среднее арифметическое.
 	public void task9(float arr[][]) {
