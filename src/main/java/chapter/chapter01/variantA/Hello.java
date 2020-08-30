@@ -1,4 +1,4 @@
-package main.java.chapter.chapter1.variantA;
+package main.java.chapter.chapter01.variantA;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package main.java.chapter.chapter1.variantA;
+package main.java.chapter.chapter01.variantA;
 
 //Создать приложение, выводящее n строк с переходом и без перехода на 
 //новую строку. 

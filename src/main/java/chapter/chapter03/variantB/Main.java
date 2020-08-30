@@ -1,4 +1,4 @@
-package main.java.chapter.chapter3.variantB;
+package main.java.chapter.chapter03.variantB;
 
 public class Main {
 

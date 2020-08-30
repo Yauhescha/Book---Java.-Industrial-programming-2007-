@@ -1,4 +1,4 @@
-package main.java.chapter.chapter2.variantA;
+package main.java.chapter.chapter02.variantA;
 
 import java.time.Month;
 import java.util.HashMap;
