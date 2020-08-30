@@ -8,14 +8,14 @@ public class Main {
 		Main main = new Main();
 		float[][] arr = main.getRandomMatrix(5, 5, 20);
 		main.printArray(arr);
-		 int k=3;
+		int k=3;
 		
 //		System.out.println(
 //				"1. Упорядочить строки (столбцы) матрицы в порядке возрастания значений элементов k-го столбца (строки).");
 //		main.task1(arr,3);
 
 		System.out.println("2. Выполнить циклический сдвиг заданной матрицы на k позиций вправо (влево, вверх, вниз).");
-		main.task2(arr);
+		main.task2(arr,k);
 
 //		System.out.println(
 //				"3. Найти и вывести наибольшее число возрастающих (убывающих) элементов матрицы, идущих подряд.");
@@ -111,11 +111,11 @@ public class Main {
 		boolean next = true;
 		while (next) {
 			next = false;
-				for (int j = 0; j < arr[k].length - 1; j++) {
-					if (arr[k][j] > arr[k][j + 1]) {
-						next = true;
-						arr=changeCollsMatrix(arr, j,j+1);
-					}
+			for (int j = 0; j < arr[k].length - 1; j++) {
+				if (arr[k][j] > arr[k][j + 1]) {
+					next = true;
+					arr=changeCollsMatrix(arr, j,j+1);
+				}
 			}
 		}
 		printArray(arr);
@@ -131,9 +131,21 @@ public class Main {
 		return arr;
 	}
 
-//	2. Выполнить циклический сдвиг заданной матрицы на k позиций вправо (влево, вверх, вниз).
-	public void task2(float arr[][]) {
-
+//	2. Выполнить циклический сдвиг заданной матрицы на k позиций вправо .
+	public void task2(float arr[][], int sdvig) {
+		int newIndex;
+		sdvig=arr[0].length-sdvig;
+		while(sdvig>=arr[0].length) {sdvig-=arr[0].length;}
+		float[][] newArr=new float[arr.length][arr[0].length];
+		for (int i = 0; i < arr.length; i++) {
+			for (int j = 0; j < arr[i].length; j++) {
+				newIndex=sdvig+j;
+				while(newIndex>=arr[i].length) {newIndex-=arr[0].length;}
+				newIndex=newIndex%(arr[i].length-1)!=0?newIndex%arr[i].length:newIndex;
+				newArr[i][j]=arr[i][newIndex];
+			}
+		}
+		printArray(newArr);
 	}
 
 //	3. Найти и вывести наибольшее число возрастающих (убывающих) элементов матрицы, идущих подряд.
