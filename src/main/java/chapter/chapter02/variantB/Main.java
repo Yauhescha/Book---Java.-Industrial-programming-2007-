@@ -34,12 +34,12 @@ public class Main {
 //		System.out.println("7. Повернуть матрицу на 90 (180, 270) градусов против часовой стрелки.");
 //		main.task7(arr);
 //
-		System.out.println("8. Вычислить определитель матрицы.");
-		main.task8(arr);
+//		System.out.println("8. Вычислить определитель матрицы.");
+//		main.task8(arr);
 //
-//		System.out
-//				.println("9. Построить матрицу, вычитая из элементов каждой строки матрицы ее среднее арифметическое.");
-//		main.task9(arr);
+		System.out
+				.println("9. Построить матрицу, вычитая из элементов каждой строки матрицы ее среднее арифметическое.");
+		main.task9(arr);
 //
 //		System.out.println(
 //				"10. Найти максимальный элемент(ы) в матрице и удалить из матрицы все строки и столбцы, его содержащие.");
@@ -285,9 +285,6 @@ public class Main {
 
 //	8. Вычислить определитель матрицы.
 	public void task8(float arr[][]) {
-		arr = new float[][] {{-2,1,3,2},{3,0,-1,2},{-5,2,3,0},{4,-1,2,-3} };
-		printArray(arr);
-
 		float opred = getOpred(arr);
 		System.out.println(opred);
 	}
@@ -299,7 +296,7 @@ public class Main {
 
 		for (int i = 0; i < arr.length; i++) {
 			int znak = i % 2 == 0 ? 1 : -1;
-			opr += getOpred(getRowMinor(arr, i)) * znak*arr[0][i];
+			opr += getOpred(getRowMinor(arr, i)) * znak * arr[0][i];
 		}
 		return opr;
 	}
@@ -314,9 +311,20 @@ public class Main {
 		return newArr;
 	}
 
-
 //	9. Построить матрицу, вычитая из элементов каждой строки матрицы ее среднее арифметическое.
 	public void task9(float arr[][]) {
+		for (int i = 0; i < arr.length; i++) {
+			float average = 0;
+			for (int j = 0; j < arr[i].length; j++) {
+				average += arr[i][j];
+			}
+
+			average = average / arr[i].length;
+			for (int j = 0; j < arr[i].length; j++) {
+				arr[i][j] -= average;
+			}
+		}
+		printArray(arr);
 	}
 
 //	10. Найти максимальный элемент(ы) в матрице и удалить из матрицы все строки и столбцы, его содержащие.
