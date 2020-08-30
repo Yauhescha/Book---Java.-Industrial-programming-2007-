@@ -8,14 +8,14 @@ public class Main {
 		Main main = new Main();
 		float[][] arr = main.getRandomMatrix(5, 5, 20);
 		main.printArray(arr);
-		int k=3;
-		
+		int k = 3;
+
 //		System.out.println(
 //				"1. Упорядочить строки (столбцы) матрицы в порядке возрастания значений элементов k-го столбца (строки).");
 //		main.task1(arr,3);
 
-		System.out.println("2. Выполнить циклический сдвиг заданной матрицы на k позиций вправо (влево, вверх, вниз).");
-		main.task2(arr,k);
+//		System.out.println("2. Выполнить циклический сдвиг заданной матрицы на k позиций вправо (влево, вверх, вниз).");
+//		main.task2(arr,k);
 
 //		System.out.println(
 //				"3. Найти и вывести наибольшее число возрастающих (убывающих) элементов матрицы, идущих подряд.");
@@ -34,8 +34,8 @@ public class Main {
 //		System.out.println("7. Повернуть матрицу на 90 (180, 270) градусов против часовой стрелки.");
 //		main.task7(arr);
 //
-//		System.out.println("8. Вычислить определитель матрицы.");
-//		main.task8(arr);
+		System.out.println("8. Вычислить определитель матрицы.");
+		main.task8(arr);
 //
 //		System.out
 //				.println("9. Построить матрицу, вычитая из элементов каждой строки матрицы ее среднее арифметическое.");
@@ -90,7 +90,7 @@ public class Main {
 		Random random = new Random();
 		for (int i = 0; i < row; i++) {
 			for (int j = 0; j < col; j++) {
-				arr[i][j] = random.nextFloat() * countNumbers;
+				arr[i][j] = random.nextFloat() * countNumbers * (random.nextBoolean() ? -1 : 1);
 			}
 		}
 		return arr;
@@ -106,6 +106,13 @@ public class Main {
 		System.out.println();
 	}
 
+	private void printArray(float[] arr) {
+		for (int i = 0; i < arr.length; i++) {
+			System.out.print(arr[i] + "\t");
+		}
+		System.out.println();
+	}
+
 //	1. Упорядочить столбцы матрицы в порядке возрастания значений элементов k-го строки.
 	public void task1(float arr[][], int k) {
 		boolean next = true;
@@ -114,12 +121,12 @@ public class Main {
 			for (int j = 0; j < arr[k].length - 1; j++) {
 				if (arr[k][j] > arr[k][j + 1]) {
 					next = true;
-					arr=changeCollsMatrix(arr, j,j+1);
+					arr = changeCollsMatrix(arr, j, j + 1);
 				}
 			}
 		}
 		printArray(arr);
- 
+
 	}
 
 	private float[][] changeCollsMatrix(float arr[][], int a, int b) {
@@ -134,15 +141,19 @@ public class Main {
 //	2. Выполнить циклический сдвиг заданной матрицы на k позиций вправо .
 	public void task2(float arr[][], int sdvig) {
 		int newIndex;
-		sdvig=arr[0].length-sdvig;
-		while(sdvig>=arr[0].length) {sdvig-=arr[0].length;}
-		float[][] newArr=new float[arr.length][arr[0].length];
+		sdvig = arr[0].length - sdvig;
+		while (sdvig >= arr[0].length) {
+			sdvig -= arr[0].length;
+		}
+		float[][] newArr = new float[arr.length][arr[0].length];
 		for (int i = 0; i < arr.length; i++) {
 			for (int j = 0; j < arr[i].length; j++) {
-				newIndex=sdvig+j;
-				while(newIndex>=arr[i].length) {newIndex-=arr[0].length;}
-				newIndex=newIndex%(arr[i].length-1)!=0?newIndex%arr[i].length:newIndex;
-				newArr[i][j]=arr[i][newIndex];
+				newIndex = sdvig + j;
+				while (newIndex >= arr[i].length) {
+					newIndex -= arr[0].length;
+				}
+				newIndex = newIndex % (arr[i].length - 1) != 0 ? newIndex % arr[i].length : newIndex;
+				newArr[i][j] = arr[i][newIndex];
 			}
 		}
 		printArray(newArr);
@@ -150,29 +161,133 @@ public class Main {
 
 //	3. Найти и вывести наибольшее число возрастающих (убывающих) элементов матрицы, идущих подряд.
 	public void task3(float arr[][]) {
+		int count = 0, max = 0;
+		for (int i = 0; i < arr.length; i++) {
+			for (int j = 0; j < arr[i].length - 1; j++) {
+				if (arr[i][j] < arr[i][j + 1]) {
+					count++;
+					max = count > max ? count : max;
+				} else
+					count = 0;
+			}
+		}
+		System.out.println("Максимальное количнсьвл возрастающих элементов: " + max);
 	}
 
-//	4. Найти сумму элементов матрицы, расположенных между первым и вторым положительными элементами каждой строки.
+//	4. Найти сумму элементов матрицы, расположенных между	первым и вторым положительными элементами каждой строки.
 	public void task4(float arr[][]) {
+		for (int i = 0; i < arr.length; i++) {
+			int first = -1, sum = 0;
+			inner: for (int j = 0; j < arr[i].length; j++) {
+				if (arr[i][j] > 0 && first != -1)
+					break inner;
+				if (arr[i][j] > 0 && first == -1) {
+					first = j;
+					continue;
+				}
+				if (first != -1)
+					sum += arr[i][j];
+			}
+			System.out.println("Строка: " + i + ", Сумма: " + sum);
+		}
 	}
 
 //	5. Транспонировать квадратную матрицу.
 	public void task5(float arr[][]) {
+		float[][] newArr = new float[arr[0].length][arr.length];
+
+		for (int i = 0; i < newArr.length; i++) {
+			for (int j = 0; j < newArr[i].length; j++) {
+				newArr[i][j] = arr[j][i];
+			}
+		}
+		printArray(newArr);
 	}
 
 //	6. Вычислить норму матрицы.
 	public void task6(float arr[][]) {
+		int summ3 = 0;
+		System.out.println("Максимальная из сумм элементов строк матрицы");
+		float[] col = new float[arr[0].length];
+		for (int i = 0; i < arr.length; i++) {
+			for (int j = 0; j < arr[i].length; j++) {
+				col[j] += Math.abs(arr[i][j]);
+				summ3 += arr[i][j] * arr[i][j];
+			}
+		}
+		System.out.println(getMax(col));
+
+		System.out.println("Максимальная из сумм элементов столбцов матрицы");
+		float[] row = new float[arr.length];
+		for (int i = 0; i < arr[0].length; i++) {
+			for (int j = 0; j < arr.length; j++) {
+				row[i] += Math.abs(arr[i][j]);
+			}
+		}
+		System.out.println(getMax(row));
+
+		System.out.println("Корень из суммы квадратов элементов матрицы");
+		System.out.println(Math.sqrt(summ3));
+	}
+
+	private float getMax(float[] arr) {
+		float max = arr[0];
+		for (int i = 1; i < arr.length; i++) {
+			if (max < arr[i])
+				max = arr[i];
+		}
+		return max;
 	}
 
 //	7. Повернуть матрицу на 90 (180, 270) градусов против часовой стрелки.
 	public void task7(float arr[][]) {
+		arr = new float[][] { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
+		printArray(arr);
+		float[][] newArr;
+		newArr = rotate90Left(arr);
+		printArray(newArr);
+		newArr = rotate180Left(arr);
+		printArray(newArr);
+		newArr = rotate270Left(arr);
+		printArray(newArr);
+
+	}
+
+	private float[][] rotate270Left(float[][] arr) {
+		float newArr[][] = new float[arr.length][arr[0].length];
+		for (int i = 0; i < arr.length; i++) {
+			for (int j = 0; j < arr[i].length; j++) {
+				newArr[j][arr[i].length - i - 1] = arr[i][j];
+			}
+		}
+		return newArr;
+	}
+
+	private float[][] rotate90Left(float[][] arr) {
+		float newArr[][] = new float[arr.length][arr[0].length];
+		for (int i = 0; i < arr.length; i++) {
+			for (int j = 0; j < arr[i].length; j++) {
+				newArr[arr[i].length - 1 - j][i] = arr[i][j];
+			}
+		}
+		return newArr;
+	}
+
+	private float[][] rotate180Left(float[][] arr) {
+		float newArr[][] = new float[arr.length][arr[0].length];
+		for (int i = 0; i < arr.length; i++) {
+			for (int j = 0; j < arr[i].length; j++) {
+				newArr[arr[i].length - 1 - i][arr[i].length - 1 - j] = arr[i][j];
+			}
+		}
+		return newArr;
 	}
 
 //	8. Вычислить определитель матрицы.
 	public void task8(float arr[][]) {
 	}
 
-//	.println("9. Построить матрицу, вычитая из элементов каждой строки матрицы ее среднее арифметическое.
+//	9. Построить матрицу, вычитая из элементов каждой строки матрицы ее среднее арифметическое.
 	public void task9(float arr[][]) {
 	}
 
