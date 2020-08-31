@@ -1,5 +1,7 @@
 package main.java.chapter.chapter02.variantB;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Random;
 
 public class Main {
@@ -41,16 +43,16 @@ public class Main {
 //				.println("9. Построить матрицу, вычитая из элементов каждой строки матрицы ее среднее арифметическое.");
 //		main.task9(arr);
 //
-		System.out.println(
-				"10. Найти максимальный элемент(ы) в матрице и удалить из матрицы все строки и столбцы, его содержащие.");
-		main.task10(arr);
+//		System.out.println(
+//				"10. Найти максимальный элемент(ы) в матрице и удалить из матрицы все строки и столбцы, его содержащие.");
+//		main.task10(arr);
 //
 //		System.out.println("11. Уплотнить матрицу, удаляя из нее строки и столбцы, заполненные нулями.");
 //		main.task11(arr);
 //
 //		System.out.println(
-//				"12. В матрице найти минимальный элемент и переместить его на место за-данного элемента путем перестановки строк и столбцов.");
-//		main.task12(arr);
+//				"12. В матрице найти минимальный элемент и переместить его на место заданного элемента путем перестановки строк и столбцов.");
+//		main.task12(arr,2,2);
 //
 //		System.out.println(
 //				"13. Преобразовать строки матрицы таким образом, чтобы элементы, рав-ные нулю, располагались после всех остальных.");
@@ -71,9 +73,9 @@ public class Main {
 //				"17. Найти число локальных минимумов. (Соседями элемента матрицы назовем элементы, имеющие с ним общую сторону или угол. Элемент матрицы называется локальным минимумом, если он строго меньше всех своих соседей.)");
 //		main.task17(arr);
 //
-//		System.out.println(
-//				"18. Найти наибольший среди локальных максимумов. (Элемент матрицы называется локальным максимумом, если он строго больше всех своих соседей.)");
-//		main.task18(arr);
+		System.out.println(
+				"18. Найти наибольший среди локальных максимумов. (Элемент матрицы называется локальным максимумом, если он строго больше всех своих соседей.)");
+		main.task18(arr);
 //
 //		System.out.println(
 //				"19. Перестроить заданную матрицу, переставляя в ней столбцы так, чтобы значения их характеристик убывали. (Характеристикой столбца прямо-угольной матрицы называется сумма модулей его элементов).");
@@ -135,6 +137,13 @@ public class Main {
 			arr[i][a] = arr[i][b];
 			arr[i][b] = temp;
 		}
+		return arr;
+	}
+
+	private float[][] changeRowsMatrix(float arr[][], int a, int b) {
+		float[] row = arr[a];
+		arr[a] = arr[b];
+		arr[b] = row;
 		return arr;
 	}
 
@@ -296,12 +305,12 @@ public class Main {
 
 		for (int i = 0; i < arr.length; i++) {
 			int znak = i % 2 == 0 ? 1 : -1;
-			opr += getOpred(getRowMinor(arr, i)) * znak * arr[0][i];
+			opr += getOpred(getRowMinorFirstRow(arr, i)) * znak * arr[0][i];
 		}
 		return opr;
 	}
 
-	private float[][] getRowMinor(float[][] arr, int col) {
+	private float[][] getRowMinorFirstRow(float[][] arr, int col) {
 		float[][] newArr = new float[arr.length - 1][arr[0].length - 1];
 		for (int i = 0; i < newArr.length; i++) {
 			for (int j = 0; j < newArr[i].length; j++) {
@@ -346,13 +355,31 @@ public class Main {
 	}
 
 	private float[][] getMatrixWithoutRowAndCol(float[][] arr, int row, int col) {
-		float[][] newArr = new float[arr.length - 1][arr[0].length - 1];
-		int itmp, jtmp;
+		float[][] newArr = deteleRow(arr, row);
+		newArr = deteleCol(newArr, col);
+
+		return newArr;
+	}
+
+	private float[][] deteleRow(float[][] arr, int row) {
+		float[][] newArr = new float[arr.length - 1][arr[0].length];
+
+		int itmp;
+		for (int i = 0; i < newArr.length; i++) {
+			itmp = i >= row ? i + 1 : i;
+			newArr[i] = arr[itmp];
+		}
+
+		return newArr;
+	}
+
+	private float[][] deteleCol(float[][] arr, int col) {
+		float[][] newArr = new float[arr.length][arr[0].length - 1];
+		int jtmp;
 		for (int i = 0; i < newArr.length; i++) {
 			for (int j = 0; j < newArr[i].length; j++) {
-				itmp = i >= row ? i + 1 : i;
 				jtmp = j >= col ? j + 1 : j;
-				newArr[i][j] = arr[itmp][jtmp];
+				newArr[i][j] = arr[i][jtmp];
 			}
 		}
 		return newArr;
@@ -360,35 +387,93 @@ public class Main {
 
 //	System.out.println("11. Уплотнить матрицу, удаляя из нее строки и столбцы, заполненные нулями.
 	public void task11(float arr[][]) {
-		
+		boolean isRow, isCol;
+		for (int i = 0; i < arr.length; i++) {
+			isRow = true;
+			for (int j = 0; j < arr[i].length; j++) {
+				if (arr[i][j] != 0.0)
+					isRow = false;
+			}
+			if (isRow)
+				arr = deteleRow(arr, i);
+		}
+
+		for (int i = 0; i < arr[0].length; i++) {
+			isCol = true;
+			inner: for (int j = 0; j < arr.length; j++) {
+				if (arr[j][i] != 0.0)
+					isCol = false;
+			}
+			if (isCol)
+				arr = deteleCol(arr, i);
+		}
+		printArray(arr);
 	}
 
 //	12. В матрице найти минимальный элемент и переместить его на место за-данного элемента путем перестановки строк и столбцов.
-	public void task12(float arr[][]) {
+	public void task12(float arr[][], int row, int col) {
+		int rowT = 0, colT = 0;
+		float max = arr[0][0];
+
+		for (int i = 0; i < arr.length; i++) {
+			for (int j = 0; j < arr[i].length; j++) {
+				if (max < arr[i][j]) {
+					max = arr[i][j];
+					rowT = i;
+					colT = j;
+				}
+			}
+		}
+
+		arr = changeCollsMatrix(arr, col, colT);
+		arr = changeRowsMatrix(arr, rowT, row);
+		System.out.println("Max: " + max + ", row: " + rowT + ", col: " + colT);
+		printArray(arr);
 	}
 
-//	13. Преобразовать строки матрицы таким образом, чтобы элементы, рав-ные нулю, располагались после всех остальных.
+//	13. Преобразовать строки матрицы таким образом, чтобы элементы, равные нулю, располагались после всех остальных.
 	public void task13(float arr[][]) {
+		int zerocount = 0;
+		for (int i = 0; i < arr.length; i++) {
+			for (int j = 0; j < arr[i].length; j++) {
+				if (arr[i][j] == 0.0) {
+					zerocount++;
+
+					if (i * arr.length + j + zerocount > arr.length * arr[0].length)
+						break;
+
+					int temp = arr.length * arr[i].length - zerocount;
+					int rowToZero = temp / arr.length;
+					int colToZero = temp % arr[i].length;
+					System.out.println("row: " + rowToZero + ", col: " + colToZero);
+
+					float t = arr[i][j];
+					arr[i][j] = arr[rowToZero][colToZero];
+					arr[rowToZero][colToZero] = t;
+					if (j == arr[i].length - 1)
+						i--;
+					j--;
+				}
+			}
+		}
+		printArray(arr);
 	}
 
 //	14. Округлить все элементы матрицы до целого числа.
 	public void task14(float arr[][]) {
+		for (int i = 0; i < arr.length; i++) {
+			for (int j = 0; j < arr[i].length; j++) {
+				arr[i][j] = (float) Math.rint(arr[i][j]);
+			}
+		}
+		printArray(arr);
 	}
 
-//	15. Найти количество всех седловых точек матрицы. (Матрица А имеет седловую точку Аi,j, если Аi,j является минимальным элементом в i-й строке и максимальным в j-м столбце).
-	public void task15(float arr[][]) {
-	}
 
-//	16. Перестроить матрицу, переставляя в ней строки так, чтобы сумма эле-ментов в строках полученной матрицы возрастала.
-	public void task16(float arr[][]) {
-	}
-
-//	17. Найти число локальных минимумов. (Соседями элемента матрицы назовем элементы, имеющие с ним общую сторону или угол. Элемент матрицы называется локальным минимумом, если он строго меньше всех своих соседей.)
-	public void task17(float arr[][]) {
-	}
 
 //	18. Найти наибольший среди локальных максимумов. (Элемент матрицы называется локальным максимумом, если он строго больше всех своих соседей.)
 	public void task18(float arr[][]) {
+		
 	}
 
 //	19. Перестроить заданную матрицу, переставляя в ней столбцы так, чтобы значения их характеристик убывали. (Характеристикой столбца прямо-угольной матрицы называется сумма модулей его элементов).
