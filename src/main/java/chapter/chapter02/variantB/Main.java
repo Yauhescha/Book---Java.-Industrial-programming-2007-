@@ -468,6 +468,40 @@ public class Main {
 		}
 		printArray(arr);
 	}
+//	15. Найти количество всех седловых точек матрицы. 
+//	(Матрица А имеет седловую точку Аi,j, если Аi,j является минимальным элементом в i-й строке и максимальным в j-м столбце).
+	public void task15(float arr[][]) {
+		int count = 0;
+		boolean minInRow, maxInCol;
+		for (int i = 0; i < arr.length; i++) {
+			for (int j = 0; j < arr[i].length; j++) {
+				minInRow = isNumberMinInRow(arr, arr[i][j], i);
+				maxInCol = isNumberMaxInCol(arr, arr[i][j], j);
+				if (minInRow && maxInCol) {
+					count++;
+					System.out.println("row: " + i + ", col: " + j);
+				}
+			}
+		}
+		System.out.println("количество всех седловых точек матрицы: " + count);
+	}
+
+	private boolean isNumberMinInRow(float[][] arr, float number, int row) {
+		for (int i = 0; i < arr[row].length; i++) {
+			if (arr[row][i] < number)
+				return false;
+		}
+		return true;
+	}
+
+	private boolean isNumberMaxInCol(float[][] arr, float number, int col) {
+		for (int i = 0; i < arr.length; i++) {
+			if (arr[i][col] > number)
+				return false;
+		}
+		return true;
+	}
+
 
 
 
