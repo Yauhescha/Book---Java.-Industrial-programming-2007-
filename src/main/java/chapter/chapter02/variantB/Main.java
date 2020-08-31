@@ -502,6 +502,32 @@ public class Main {
 		return true;
 	}
 
+//	16. Перестроить матрицу, переставляя в ней строки так, чтобы сумма элементов в строках полученной матрицы возрастала.
+	public void task16(float arr[][]) {
+		float secondSum, firstSum;
+		boolean hasNext = true;
+		while (hasNext) {
+			hasNext = false;
+			for (int i = 0; i < arr.length - 1; i++) {
+				firstSum = getSumRowsNumbers(arr, i);
+				secondSum = getSumRowsNumbers(arr, i + 1);
+				if (firstSum > secondSum) {
+					hasNext = true;
+					arr = changeRowsMatrix(arr, i, i + 1);
+				}
+			}
+
+		}
+		printArray(arr);
+	}
+
+	private float getSumRowsNumbers(float[][] arr, int row) {
+		float sum = 0;
+		for (int i = 0; i < arr[row].length; i++) {
+			sum += arr[row][i];
+		}
+		return sum;
+	}
 
 
 
