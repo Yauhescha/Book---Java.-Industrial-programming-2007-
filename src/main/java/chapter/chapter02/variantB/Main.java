@@ -529,6 +529,43 @@ public class Main {
 		return sum;
 	}
 
+//	17. Найти число локальных минимумов. (Соседями элемента матрицы назовем элементы, имеющие с ним общую сторону или угол. Элемент матрицы называется локальным минимумом, если он строго меньше всех своих соседей.)
+	public void task17(float arr[][]) {
+		ArrayList<Float> list = new ArrayList<Float>();
+
+		int count = 0;
+		float[] tmp;
+		for (int i = 0; i < arr.length; i++) {
+			for (int j = 0; j < arr[i].length; j++) {
+				ArrayList<Float> arrayList = getNumbersAroundAsList(arr, i, j);
+				if (isNumberMinInArray(arrayList, arr[i][j])) {
+					count++;
+					System.out.println("min: " + arr[i][j] + ", i: " + i + ", j: " + j);
+				}
+			}
+		}
+		System.out.println("число локальных минимумов: " + count);
+	}
+
+	private ArrayList<Float> getNumbersAroundAsList(float[][] arr, int i, int j) {
+		ArrayList<Float> list = new ArrayList<Float>();
+		for (int x = i - 1; x <= i + 1; x++)
+			if (x >= 0 && x<arr[i].length)
+				for (int y = j - 1; y <= j + 1; y++) {
+					if (y>=0  && y < arr[x].length)
+						list.add(arr[x][y]);
+				}
+		return list;
+	}
+
+	private boolean isNumberMinInArray(ArrayList<Float> list, float min) {
+		for (Iterator iterator = list.iterator(); iterator.hasNext();) {
+			Float float1 = (Float) iterator.next();
+			if (float1 < min)
+				return false;
+		}
+		return true;
+	}
 
 
 //	18. Найти наибольший среди локальных максимумов. (Элемент матрицы называется локальным максимумом, если он строго больше всех своих соседей.)
