@@ -73,13 +73,13 @@ public class Main {
 //				"17. Найти число локальных минимумов. (Соседями элемента матрицы назовем элементы, имеющие с ним общую сторону или угол. Элемент матрицы называется локальным минимумом, если он строго меньше всех своих соседей.)");
 //		main.task17(arr);
 //
-		System.out.println(
-				"18. Найти наибольший среди локальных максимумов. (Элемент матрицы называется локальным максимумом, если он строго больше всех своих соседей.)");
-		main.task18(arr);
-//
 //		System.out.println(
-//				"19. Перестроить заданную матрицу, переставляя в ней столбцы так, чтобы значения их характеристик убывали. (Характеристикой столбца прямо-угольной матрицы называется сумма модулей его элементов).");
-//		main.task19(arr);
+//				"18. Найти наибольший среди локальных максимумов. (Элемент матрицы называется локальным максимумом, если он строго больше всех своих соседей.)");
+//		main.task18(arr);
+//
+		System.out.println(
+				"19. Перестроить заданную матрицу, переставляя в ней столбцы так, чтобы значения их характеристик убывали. (Характеристикой столбца прямо-угольной матрицы называется сумма модулей его элементов).");
+		main.task19(arr);
 //
 //		System.out.println(
 //				"20. Путем перестановки элементов квадратной вещественной матрицы до-биться того, чтобы ее максимальный элемент находился в левом верх-нем углу, следующий по величине – в позиции (2,2), следующий по ве-личине – в позиции (3,3) и т. д., заполнив таким образом всю главную диагональ.");
@@ -400,7 +400,7 @@ public class Main {
 
 		for (int i = 0; i < arr[0].length; i++) {
 			isCol = true;
-			inner: for (int j = 0; j < arr.length; j++) {
+			for (int j = 0; j < arr.length; j++) {
 				if (arr[j][i] != 0.0)
 					isCol = false;
 			}
@@ -532,10 +532,7 @@ public class Main {
 
 //	17. Найти число локальных минимумов. (Соседями элемента матрицы назовем элементы, имеющие с ним общую сторону или угол. Элемент матрицы называется локальным минимумом, если он строго меньше всех своих соседей.)
 	public void task17(float arr[][]) {
-		ArrayList<Float> list = new ArrayList<Float>();
-
 		int count = 0;
-		float[] tmp;
 		for (int i = 0; i < arr.length; i++) {
 			for (int j = 0; j < arr[i].length; j++) {
 				ArrayList<Float> arrayList = getNumbersAroundAsList(arr, i, j);
@@ -560,7 +557,7 @@ public class Main {
 	}
 
 	private boolean isNumberMinInArray(ArrayList<Float> list, float min) {
-		for (Iterator iterator = list.iterator(); iterator.hasNext();) {
+		for (Iterator<Float> iterator = list.iterator(); iterator.hasNext();) {
 			Float float1 = (Float) iterator.next();
 			if (float1 < min)
 				return false;
@@ -569,7 +566,7 @@ public class Main {
 	}
 
 	private boolean isNumberMaxInArray(ArrayList<Float> list, float min) {
-		for (Iterator iterator = list.iterator(); iterator.hasNext();) {
+		for (Iterator<Float> iterator = list.iterator(); iterator.hasNext();) {
 			Float float1 = (Float) iterator.next();
 			if (float1 > min)
 				return false;
