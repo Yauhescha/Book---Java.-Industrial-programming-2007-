@@ -468,6 +468,7 @@ public class Main {
 		}
 		printArray(arr);
 	}
+
 //	15. Найти количество всех седловых точек матрицы. 
 //	(Матрица А имеет седловую точку Аi,j, если Аi,j является минимальным элементом в i-й строке и максимальным в j-м столбце).
 	public void task15(float arr[][]) {
@@ -550,9 +551,9 @@ public class Main {
 	private ArrayList<Float> getNumbersAroundAsList(float[][] arr, int i, int j) {
 		ArrayList<Float> list = new ArrayList<Float>();
 		for (int x = i - 1; x <= i + 1; x++)
-			if (x >= 0 && x<arr[i].length)
+			if (x >= 0 && x < arr[i].length)
 				for (int y = j - 1; y <= j + 1; y++) {
-					if (y>=0  && y < arr[x].length)
+					if (y >= 0 && y < arr[x].length)
 						list.add(arr[x][y]);
 				}
 		return list;
@@ -567,10 +568,34 @@ public class Main {
 		return true;
 	}
 
+	private boolean isNumberMaxInArray(ArrayList<Float> list, float min) {
+		for (Iterator iterator = list.iterator(); iterator.hasNext();) {
+			Float float1 = (Float) iterator.next();
+			if (float1 > min)
+				return false;
+		}
+		return true;
+	}
 
 //	18. Найти наибольший среди локальных максимумов. (Элемент матрицы называется локальным максимумом, если он строго больше всех своих соседей.)
 	public void task18(float arr[][]) {
-		
+		ArrayList<Float> listMaximumow = new ArrayList<Float>();
+		for (int i = 0; i < arr.length; i++) {
+			for (int j = 0; j < arr[i].length; j++) {
+				ArrayList<Float> arrayList = getNumbersAroundAsList(arr, i, j);
+				if (isNumberMaxInArray(arrayList, arr[i][j])) {
+					listMaximumow.add(arr[i][j]);
+					System.out.println("max: " + arr[i][j] + ", i: " + i + ", j: " + j);
+				}
+			}
+		}
+
+		float[] maximums = new float[listMaximumow.size()];
+		for (int i = 0; i < listMaximumow.size(); i++)
+			maximums[i] = listMaximumow.get(i).floatValue();
+
+		float max = getMax(maximums);
+		System.out.println("Максимальный из максимумов: " + max);
 	}
 
 //	19. Перестроить заданную матрицу, переставляя в ней столбцы так, чтобы значения их характеристик убывали. (Характеристикой столбца прямо-угольной матрицы называется сумма модулей его элементов).
