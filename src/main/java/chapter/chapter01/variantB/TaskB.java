@@ -79,14 +79,14 @@ public class TaskB {
 		System.out.println();
 	}
 
-	private void print(ArrayList list) {
+	private void print(ArrayList<Integer> list) {
 		for (int i = 0; i < list.size(); i++) {
 			System.out.print(list.get(i) + " ");
 		}
 		System.out.println();
 	}
 
-	private void print(HashMap map) {
+	private void print(HashMap<Integer, Integer> map) {
 		Iterator<Map.Entry<Integer, Integer>> iterator = map.entrySet().iterator();
 
 		while (iterator.hasNext()) {
