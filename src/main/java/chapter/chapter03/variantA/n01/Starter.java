@@ -1,4 +1,4 @@
-package main.java.chapter.chapter03.variantA.n1;
+package main.java.chapter.chapter03.variantA.n01;
 
 import java.sql.Date;
 

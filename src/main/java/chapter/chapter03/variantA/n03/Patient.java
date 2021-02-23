@@ -1,4 +1,4 @@
-package main.java.chapter.chapter03.variantA.n3;
+package main.java.chapter.chapter03.variantA.n03;
 
 public class Patient {
 

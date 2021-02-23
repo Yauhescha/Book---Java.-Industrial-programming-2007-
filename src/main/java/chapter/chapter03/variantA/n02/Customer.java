@@ -1,4 +1,4 @@
-package main.java.chapter.chapter03.variantA.n2;
+package main.java.chapter.chapter03.variantA.n02;
 
 public class Customer implements Comparable<Customer>{
 
