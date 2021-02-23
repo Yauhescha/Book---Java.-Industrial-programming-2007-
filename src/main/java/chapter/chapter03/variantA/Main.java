@@ -32,12 +32,9 @@ public class Main {
 		main.java.chapter.chapter03.variantA.n07.Starter.printTaskInfo();
 		main.java.chapter.chapter03.variantA.n07.Starter.main(null);
 		
+		main.java.chapter.chapter03.variantA.n08.Starter.printTaskInfo();
+		main.java.chapter.chapter03.variantA.n08.Starter.main(null);
 		
-		System.out.println("8. Car: id, Марка, Модель, Год выпуска, Цвет, Цена, Регистрационный номер.");
-		System.out.println("Создать массив объектов. Вывести:");
-		System.out.println("a) список автомобилей заданной марки;");
-		System.out.println("b) список автомобилей заданной модели, которые эксплуатируются боль ше n лет;");
-		System.out.println("c) список автомобилей заданного года выпуска, цена которых больше указанной.");
 		
 		System.out.println("9. Product: id, Наименование, UPC, Производитель, Цена, Срок хранения, Количество.");
 		System.out.println("Создать массив объектов. Вывести:");
