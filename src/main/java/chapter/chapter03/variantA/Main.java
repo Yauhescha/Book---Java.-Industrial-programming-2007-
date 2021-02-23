@@ -29,12 +29,9 @@ public class Main {
 		main.java.chapter.chapter03.variantA.n06.Starter.printTaskInfo();
 		main.java.chapter.chapter03.variantA.n06.Starter.main(null);
 		
+		main.java.chapter.chapter03.variantA.n07.Starter.printTaskInfo();
+		main.java.chapter.chapter03.variantA.n07.Starter.main(null);
 		
-		System.out.println("7. Phone: id, Фамилия, Имя, Отчество, Адрес, Номер кредитной карточки, Дебет, Кредит, Время городских и междугородных разговоров.");
-		System.out.println("Создать массив объектов. Вывести:");
-		System.out.println("a) сведения об абонентах, у которых время внутригородских разговоров превышает заданное");
-		System.out.println("b) сведения об абонентах, которые пользовались междугородной связью;");
-		System.out.println("c) сведения об абонентах в алфавитном порядке.");
 		
 		System.out.println("8. Car: id, Марка, Модель, Год выпуска, Цвет, Цена, Регистрационный номер.");
 		System.out.println("Создать массив объектов. Вывести:");
