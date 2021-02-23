@@ -1,6 +1,5 @@
 package main.java.chapter.chapter03.variantA;
 
-import main.java.chapter.chapter03.variantA.n1.Starter;
 
 public class Main {
 
@@ -12,13 +11,11 @@ public class Main {
 				+ "В каждом классе, обладающем информацией, должно быть объявлено несколько конструкторов.");
 		
 		
-		Starter.printTaskInfo();
-		Starter.main(null);
+		main.java.chapter.chapter03.variantA.n1.Starter.printTaskInfo();
+		main.java.chapter.chapter03.variantA.n1.Starter.main(null);
 		
-		System.out.println("2. Customer: id, Фамилия, Имя, Отчество, Адрес, Номер кредитной карточки, Номер банковского счета.");
-		System.out.println(" Создать массив объектов. Вывести:");
-		System.out.println("a) список покупателей в алфавитном порядке;");
-		System.out.println("b) список покупателей, у которых номер кредитной карточки находится в заданном интервале.");
+		main.java.chapter.chapter03.variantA.n2.Starter.printTaskInfo();
+		main.java.chapter.chapter03.variantA.n2.Starter.main(null);
 		
 		System.out.println("3. Patient: id, Фамилия, Имя, Отчество, Адрес, Телефон, Номер медицинской карты, Диагноз.");
 		System.out.println(" Создать массив объектов. Вывести:");
