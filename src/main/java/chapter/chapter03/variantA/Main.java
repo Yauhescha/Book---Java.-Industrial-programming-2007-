@@ -23,12 +23,9 @@ public class Main {
 		main.java.chapter.chapter03.variantA.n04.Starter.printTaskInfo();
 		main.java.chapter.chapter03.variantA.n04.Starter.main(null);
 		
-				
-		System.out.println("5. Book: id, Название, Автор (ы), Издательство, Год издания, Количество страниц, Цена, Тип переплета.");
-		System.out.println("Создать массив объектов. Вывести:");
-		System.out.println("a) список книг заданного автора;");
-		System.out.println("b) список книг, выпущенных заданным издательством; ");
-		System.out.println("c) список книг, выпущенных после заданного года.");
+		main.java.chapter.chapter03.variantA.n05.Starter.printTaskInfo();
+		main.java.chapter.chapter03.variantA.n05.Starter.main(null);
+		
 		
 		System.out.println("6. House: id, Номер квартиры, Площадь, Этаж, Количество комнат, Улица, Тип здания, Срок эксплуатации.");
 		System.out.println("Создать массив объектов. Вывести:");
