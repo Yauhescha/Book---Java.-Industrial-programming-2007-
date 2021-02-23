@@ -1,5 +1,7 @@
 package main.java.chapter.chapter03.variantA;
 
+import main.java.chapter.chapter03.variantA.n1.Starter;
+
 public class Main {
 
 	public static void main(String[] args) {
@@ -9,12 +11,9 @@ public class Main {
 				+ "Задать критерий выбора данных и вывести эти данные на консоль. "
 				+ "В каждом классе, обладающем информацией, должно быть объявлено несколько конструкторов.");
 		
-		System.out.println("1. Student: id, Фамилия, Имя, Отчество, Дата рождения, Адрес, Телефон, Факультет, Курс, Группа.");
-		System.out.println(" Создать массив объектов. Вывести:");
-		System.out.println("a) список студентов заданного факультета;");
-		System.out.println("b) списки студентов для каждого факультета и курса;");
-		System.out.println("c) список студентов, родившихся после заданного года; ");
-		System.out.println("d) список учебной группы.");
+		
+		Starter.printTaskInfo();
+		Starter.main(null);
 		
 		System.out.println("2. Customer: id, Фамилия, Имя, Отчество, Адрес, Номер кредитной карточки, Номер банковского счета.");
 		System.out.println(" Создать массив объектов. Вывести:");
