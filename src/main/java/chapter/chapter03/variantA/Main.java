@@ -26,12 +26,9 @@ public class Main {
 		main.java.chapter.chapter03.variantA.n05.Starter.printTaskInfo();
 		main.java.chapter.chapter03.variantA.n05.Starter.main(null);
 		
+		main.java.chapter.chapter03.variantA.n06.Starter.printTaskInfo();
+		main.java.chapter.chapter03.variantA.n06.Starter.main(null);
 		
-		System.out.println("6. House: id, Номер квартиры, Площадь, Этаж, Количество комнат, Улица, Тип здания, Срок эксплуатации.");
-		System.out.println("Создать массив объектов. Вывести:");
-		System.out.println("a) список квартир, имеющих заданное число комнат;");
-		System.out.println("b) список квартир, имеющих заданное число комнат и расположенных на этаже, который находится в заданном промежутке;");
-		System.out.println("c) список квартир, имеющих площадь, превосходящую заданную.");
 		
 		System.out.println("7. Phone: id, Фамилия, Имя, Отчество, Адрес, Номер кредитной карточки, Дебет, Кредит, Время городских и междугородных разговоров.");
 		System.out.println("Создать массив объектов. Вывести:");
