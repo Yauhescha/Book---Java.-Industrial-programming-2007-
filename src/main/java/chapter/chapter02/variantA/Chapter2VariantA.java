@@ -1,6 +1,6 @@
 package main.java.chapter.chapter02.variantA;
 
-import java.time.Month;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Scanner;
@@ -11,7 +11,9 @@ public class Chapter2VariantA {
 	Scanner sc = new Scanner(System.in);
 	int countLinesToInput;
 	String[] arrString;
-
+	 private  String [] months = {"January","February","March","April","May","June","July","August","September","October",
+	            "November","December"};
+	 
 	public static void main(String[] args) {
 		Chapter2VariantA chapter2 = new Chapter2VariantA();
 		String[] strings = chapter2.getNLinesFromConsole();
@@ -361,10 +363,11 @@ public class Chapter2VariantA {
 //	14. Ввести число от 1 до 12. Вывести на консоль название месяца, соответ-ствующего данному числу. (Осуществить проверку корректности ввода чисел).
 	public void task14(int k) {
 		if(k<1||k>12) {
-			System.out.println("не диапазона");
+			System.out.println("Вне диапазона");
 			return;
 		}
-		System.out.println(Month.of(k));
+
+		System.out.println(months[k]);
 	}
 
 }
