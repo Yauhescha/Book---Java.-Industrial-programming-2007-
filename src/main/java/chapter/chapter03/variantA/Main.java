@@ -17,10 +17,10 @@ public class Main {
 		main.java.chapter.chapter03.variantA.n2.Starter.printTaskInfo();
 		main.java.chapter.chapter03.variantA.n2.Starter.main(null);
 		
-		System.out.println("3. Patient: id, Фамилия, Имя, Отчество, Адрес, Телефон, Номер медицинской карты, Диагноз.");
-		System.out.println(" Создать массив объектов. Вывести:");
-		System.out.println("a) список пациентов, имеющих данный диагноз;");
-		System.out.println("b) список пациентов, номер медицинской карты которых находится в заданном интервале.");
+		main.java.chapter.chapter03.variantA.n3.Starter.printTaskInfo();
+		main.java.chapter.chapter03.variantA.n3.Starter.main(null);
+		
+		
 		
 		System.out.println("4. Abiturient: id, Фамилия, Имя, Отчество, Адрес, Телефон, Оценки.");
 		System.out.println("Создать массив объектов. Вывести:");
