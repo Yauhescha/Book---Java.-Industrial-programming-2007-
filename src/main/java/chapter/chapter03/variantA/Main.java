@@ -11,24 +11,19 @@ public class Main {
 				+ "В каждом классе, обладающем информацией, должно быть объявлено несколько конструкторов.");
 		
 		
-		main.java.chapter.chapter03.variantA.n1.Starter.printTaskInfo();
-		main.java.chapter.chapter03.variantA.n1.Starter.main(null);
+		main.java.chapter.chapter03.variantA.n01.Starter.printTaskInfo();
+		main.java.chapter.chapter03.variantA.n01.Starter.main(null);
 		
-		main.java.chapter.chapter03.variantA.n2.Starter.printTaskInfo();
-		main.java.chapter.chapter03.variantA.n2.Starter.main(null);
+		main.java.chapter.chapter03.variantA.n02.Starter.printTaskInfo();
+		main.java.chapter.chapter03.variantA.n02.Starter.main(null);
 		
-		main.java.chapter.chapter03.variantA.n3.Starter.printTaskInfo();
-		main.java.chapter.chapter03.variantA.n3.Starter.main(null);
+		main.java.chapter.chapter03.variantA.n03.Starter.printTaskInfo();
+		main.java.chapter.chapter03.variantA.n03.Starter.main(null);
 		
+		main.java.chapter.chapter03.variantA.n04.Starter.printTaskInfo();
+		main.java.chapter.chapter03.variantA.n04.Starter.main(null);
 		
-		
-		System.out.println("4. Abiturient: id, Фамилия, Имя, Отчество, Адрес, Телефон, Оценки.");
-		System.out.println("Создать массив объектов. Вывести:");
-		System.out.println("a) список абитуриентов, имеющих неудовлетворительные оценки;");
-		System.out.println("b) список абитуриентов, у которых сумма баллов выше заданной;");
-		System.out.println("c) выбрать заданное число n абитуриентов, имеющих самую высокую сумму баллов "
-				+ "(вывести также полный список абитуриентов, имеющих полупроходную сумму).");
-		
+				
 		System.out.println("5. Book: id, Название, Автор (ы), Издательство, Год издания, Количество страниц, Цена, Тип переплета.");
 		System.out.println("Создать массив объектов. Вывести:");
 		System.out.println("a) список книг заданного автора;");
