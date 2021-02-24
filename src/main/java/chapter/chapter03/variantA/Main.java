@@ -44,12 +44,7 @@ public class Main {
 		main.java.chapter.chapter03.variantA.n11.Starter.printTaskInfo();
 		main.java.chapter.chapter03.variantA.n11.Starter.main(null);
 		
-		
-		System.out.println("12. Airline: Пункт назначения, Номер рейса, Тип самолета, Время вылета, Дни недели.");
-		System.out.println("Создать массив объектов. Вывести:");
-		System.out.println("a) список рейсов для заданного пункта назначения;");
-		System.out.println("b) список рейсов для заданного дня недели;");
-		System.out.println("c) список рейсов для заданного дня недели, время вылета для которыхбольше заданного.");
-		}
-
+		main.java.chapter.chapter03.variantA.n12.Starter.printTaskInfo();
+		main.java.chapter.chapter03.variantA.n12.Starter.main(null);
+	}
 }
