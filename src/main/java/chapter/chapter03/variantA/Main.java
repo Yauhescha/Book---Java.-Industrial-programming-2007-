@@ -41,12 +41,9 @@ public class Main {
 		main.java.chapter.chapter03.variantA.n10.Starter.printTaskInfo();
 		main.java.chapter.chapter03.variantA.n10.Starter.main(null);
 		
+		main.java.chapter.chapter03.variantA.n11.Starter.printTaskInfo();
+		main.java.chapter.chapter03.variantA.n11.Starter.main(null);
 		
-		System.out.println("11. Bus: Фамилия и инициалы водителя, Номер автобуса, Номер маршрута, Марка, Год начала эксплуатации, Пробег.");
-		System.out.println("Создать массив объектов. Вывести:");
-		System.out.println("a) список автобусов для заданного номера маршрута;");
-		System.out.println("b) список автобусов, которые эксплуатируются больше заданного срока; ");
-		System.out.println("c) список автобусов, пробег у которых больше заданного расстояния.");
 		
 		System.out.println("12. Airline: Пункт назначения, Номер рейса, Тип самолета, Время вылета, Дни недели.");
 		System.out.println("Создать массив объектов. Вывести:");
