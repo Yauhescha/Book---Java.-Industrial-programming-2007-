@@ -38,12 +38,9 @@ public class Main {
 		main.java.chapter.chapter03.variantA.n09.Starter.printTaskInfo();
 		main.java.chapter.chapter03.variantA.n09.Starter.main(null);
 		
+		main.java.chapter.chapter03.variantA.n10.Starter.printTaskInfo();
+		main.java.chapter.chapter03.variantA.n10.Starter.main(null);
 		
-		System.out.println("10. Train: Пункт назначения, Номер поезда, Время отправления, Число мест (общих, купе, плацкарт, люкс).");
-		System.out.println("Создать массив объектов. Вывести:");
-		System.out.println("a) список поездов, следующих до заданного пункта назначения;");
-		System.out.println("b) список поездов, следующих до заданного пункта назначения и отправляющихся после заданного часа;");
-		System.out.println("c) список поездов, отправляющихся до заданного пункта назначения и имеющих общие места.");
 		
 		System.out.println("11. Bus: Фамилия и инициалы водителя, Номер автобуса, Номер маршрута, Марка, Год начала эксплуатации, Пробег.");
 		System.out.println("Создать массив объектов. Вывести:");
