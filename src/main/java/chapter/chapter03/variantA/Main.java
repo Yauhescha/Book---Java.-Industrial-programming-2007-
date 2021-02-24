@@ -35,12 +35,9 @@ public class Main {
 		main.java.chapter.chapter03.variantA.n08.Starter.printTaskInfo();
 		main.java.chapter.chapter03.variantA.n08.Starter.main(null);
 		
+		main.java.chapter.chapter03.variantA.n09.Starter.printTaskInfo();
+		main.java.chapter.chapter03.variantA.n09.Starter.main(null);
 		
-		System.out.println("9. Product: id, Наименование, UPC, Производитель, Цена, Срок хранения, Количество.");
-		System.out.println("Создать массив объектов. Вывести:");
-		System.out.println("a) список товаров для заданного наименования;");
-		System.out.println("b) список товаров для заданного наименования, цена которых не превосходит заданную;");
-		System.out.println("c) список товаров, срок хранения которых больше заданного.");
 		
 		System.out.println("10. Train: Пункт назначения, Номер поезда, Время отправления, Число мест (общих, купе, плацкарт, люкс).");
 		System.out.println("Создать массив объектов. Вывести:");
