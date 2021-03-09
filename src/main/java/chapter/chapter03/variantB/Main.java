@@ -7,8 +7,7 @@ public class Main {
 		new main.java.chapter.chapter03.variantB.n1.Starter().run();
 		new main.java.chapter.chapter03.variantB.n2.Starter().run();
 		new main.java.chapter.chapter03.variantB.n3.Starter().run();
-		System.out.println("4. Определить класс Полином степени n. "
-							+ "Объявить массив/список/множество из m полиномов и определить сумму полиномов массива.");
+		new main.java.chapter.chapter03.variantB.n4.Starter().run();
 		System.out.println("5. Определить класс Интервал с учетом включения/невключения концов. "
 							+ "Создать методы по определению пересечения и объединения интервалов, причем интервалы, не имеющие общих точек, пересекаться/объединятся не могут. "
 							+ "Объявить массив/список/множество и n интервалов и определить расстояние между самыми удаленными концами.");
